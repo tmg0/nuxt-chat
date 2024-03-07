@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss"],
+  app: {
+    baseURL: '/_prefix'
+  },
   nitro: {
     experimental: {
       websocket: true,

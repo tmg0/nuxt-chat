@@ -10,7 +10,7 @@ if (!userId.value) {
 }
 
 if (!messages.value.length) {
-  const res = await $fetch("/api/messages")
+  const res = await $fetch("/_prefix/api/messages")
   messages.value.push(...res.messages)
 }
 
@@ -27,7 +27,7 @@ const log = (user: string, ...args: string[]) => {
 
 const connect = async () => {
   const isSecure = location.protocol === "https:";
-  const url = (isSecure ? "wss://" : "ws://") + location.host + "/api/chat-ws?userId=" + userId.value;
+  const url = (isSecure ? "wss://" : "ws://") + location.host + "/_prefix/api/chat-ws?userId=" + userId.value;
   if (ws) {
     log("ws", "Closing previous connection before reconnecting...");
     ws.close();
